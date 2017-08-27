@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Data>
+<baseImgUrl>http://thegamesdb.net/banners/</baseImgUrl>
+<Game>
+<id>24268</id>
+<GameTitle>Baku Baku</GameTitle>
+<AlternateTitles><title>Baku Baku Animal</title></AlternateTitles><PlatformId>20</PlatformId>
+<Platform>Sega Game Gear</Platform>
+<ReleaseDate>01/26/1996</ReleaseDate>
+<Overview>You're the zookeeper in a crazy kingdom. But you'd better watch out - once you dive into the Baku Baku den, there's no turning back... To win, match each animal with its favorite food. Challenge computer characters or go head-to-head in 2-player mode. Beautiful 3D graphics and stunning colors bring puzzling to the next level. Variable game speed lets you go slow-mo or full throttle. Better be clever - surprises await true Baku masters...</Overview>
+<ESRB>E - Everyone</ESRB>
+<Genres><genre>Puzzle</genre></Genres><Players>1</Players><Co-op>No</Co-op>
+<Publisher>Sega</Publisher>
+<Developer>Minato Giken</Developer>
+<Images>
+<boxart side="back" width="972" height="1346" thumb="boxart/thumb/original/back/24268-1.png">boxart/original/back/24268-1.png</boxart>
+<boxart side="front" width="1159" height="1600" thumb="boxart/thumb/original/front/24268-1.jpg">boxart/original/front/24268-1.jpg</boxart>
+<clearlogo width="400" height="77">clearlogo/24268.png</clearlogo></Images>
+</Game>
+</Data>

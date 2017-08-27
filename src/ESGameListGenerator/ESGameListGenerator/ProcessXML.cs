@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace ESGameListGenerator
@@ -34,6 +35,20 @@ namespace ESGameListGenerator
             model = (T)serializer.Deserialize( reader );
 
             reader.Close();
+
+            return model;
+        }
+
+        public static T ParseXMLToModel<T>( string xml )
+        {
+            T model = default( T );
+
+            // convert string to stream
+            byte[] byteArray = Encoding.UTF8.GetBytes( xml );
+            MemoryStream stream = new MemoryStream( byteArray );
+
+            var serializer = new XmlSerializer( typeof( T ) );
+            model = (T)serializer.Deserialize( stream );
 
             return model;
         }
