@@ -63,6 +63,7 @@ namespace ESGameListGenerator
             {
                 var imgDir = txtRomFolder.Text;
                 imgDir = chkImgUseSubfolder.Checked ? Path.Combine( imgDir, txtImgSubfolder.Text ) : imgDir;
+                var piSubDir = chkImgUseSubfolder.Checked ? txtImgSubfolder.Text : "";
 
                 var imageFiles = DirectoryScanner.FindImageFiles( imgDir );
 
@@ -72,7 +73,7 @@ namespace ESGameListGenerator
 
                     if ( game != null )
                     {
-                        game.Image = string.Format( "./{0}", imgFile.Name);
+                        game.Image = string.Format( "./{0}/{1}", piSubDir, imgFile.Name);
                     }
                 }
             }
