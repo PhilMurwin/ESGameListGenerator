@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace ESGameListGenerator2
+namespace ESGameListGenerator
 {
     public static class DirectoryScanner
     {
@@ -35,6 +35,16 @@ namespace ESGameListGenerator2
             files = dirInfo.GetFiles().Select( f => f.Extension ).Distinct().ToList();
 
             return files;
+        }
+
+        public static List<FileInfo> FindImageFiles( string dirPath )
+        {
+            var imgFiles = new List<FileInfo>();
+
+            var dirInfo = new DirectoryInfo( dirPath );
+            imgFiles = dirInfo.GetFilesByExtensions( ".bmp", ".jpg", ".png" ).ToList();
+
+            return imgFiles;
         }
     }
 }

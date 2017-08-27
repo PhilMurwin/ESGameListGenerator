@@ -1,4 +1,4 @@
-﻿namespace ESGameListGenerator2
+﻿namespace ESGameListGenerator
 {
     partial class frmGameListGen
     {
@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.pnlROMFolder = new System.Windows.Forms.Panel();
+            this.cboRomExt = new System.Windows.Forms.ComboBox();
             this.lblRomExtension = new System.Windows.Forms.Label();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.txtRomFolder = new System.Windows.Forms.TextBox();
             this.lblRomFolder = new System.Windows.Forms.Label();
             this.pnlImageOptions = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtImgSubfolder = new System.Windows.Forms.TextBox();
             this.lblImgSubfolder = new System.Windows.Forms.Label();
-            this.txtImgExt = new System.Windows.Forms.TextBox();
-            this.lblImgExt = new System.Windows.Forms.Label();
             this.chkImagefield = new System.Windows.Forms.CheckBox();
             this.pnlOptions = new System.Windows.Forms.Panel();
             this.lblOptions = new System.Windows.Forms.Label();
@@ -51,7 +50,7 @@
             this.lblBegin = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.cboRomExt = new System.Windows.Forms.ComboBox();
+            this.chkImgUseSubfolder = new System.Windows.Forms.CheckBox();
             this.pnlROMFolder.SuspendLayout();
             this.pnlImageOptions.SuspendLayout();
             this.pnlOptions.SuspendLayout();
@@ -71,6 +70,14 @@
             this.pnlROMFolder.Name = "pnlROMFolder";
             this.pnlROMFolder.Size = new System.Drawing.Size(427, 83);
             this.pnlROMFolder.TabIndex = 0;
+            // 
+            // cboRomExt
+            // 
+            this.cboRomExt.FormattingEnabled = true;
+            this.cboRomExt.Location = new System.Drawing.Point(95, 50);
+            this.cboRomExt.Name = "cboRomExt";
+            this.cboRomExt.Size = new System.Drawing.Size(98, 21);
+            this.cboRomExt.TabIndex = 4;
             // 
             // lblRomExtension
             // 
@@ -109,49 +116,33 @@
             // 
             // pnlImageOptions
             // 
-            this.pnlImageOptions.Controls.Add(this.textBox3);
+            this.pnlImageOptions.Controls.Add(this.chkImgUseSubfolder);
+            this.pnlImageOptions.Controls.Add(this.txtImgSubfolder);
             this.pnlImageOptions.Controls.Add(this.lblImgSubfolder);
-            this.pnlImageOptions.Controls.Add(this.txtImgExt);
-            this.pnlImageOptions.Controls.Add(this.lblImgExt);
             this.pnlImageOptions.Controls.Add(this.chkImagefield);
             this.pnlImageOptions.Location = new System.Drawing.Point(13, 28);
             this.pnlImageOptions.Name = "pnlImageOptions";
             this.pnlImageOptions.Size = new System.Drawing.Size(406, 30);
             this.pnlImageOptions.TabIndex = 1;
             // 
-            // textBox3
+            // txtImgSubfolder
             // 
-            this.textBox3.Location = new System.Drawing.Point(292, 5);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(94, 20);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.Text = "boxart";
+            this.txtImgSubfolder.Enabled = false;
+            this.txtImgSubfolder.Location = new System.Drawing.Point(292, 5);
+            this.txtImgSubfolder.Name = "txtImgSubfolder";
+            this.txtImgSubfolder.Size = new System.Drawing.Size(94, 20);
+            this.txtImgSubfolder.TabIndex = 4;
+            this.txtImgSubfolder.Text = "boxart";
             // 
             // lblImgSubfolder
             // 
             this.lblImgSubfolder.AutoSize = true;
+            this.lblImgSubfolder.Enabled = false;
             this.lblImgSubfolder.Location = new System.Drawing.Point(234, 8);
             this.lblImgSubfolder.Name = "lblImgSubfolder";
             this.lblImgSubfolder.Size = new System.Drawing.Size(52, 13);
             this.lblImgSubfolder.TabIndex = 3;
             this.lblImgSubfolder.Text = "Subfolder";
-            // 
-            // txtImgExt
-            // 
-            this.txtImgExt.Location = new System.Drawing.Point(162, 5);
-            this.txtImgExt.Name = "txtImgExt";
-            this.txtImgExt.Size = new System.Drawing.Size(51, 20);
-            this.txtImgExt.TabIndex = 2;
-            this.txtImgExt.Text = ".png";
-            // 
-            // lblImgExt
-            // 
-            this.lblImgExt.AutoSize = true;
-            this.lblImgExt.Location = new System.Drawing.Point(103, 8);
-            this.lblImgExt.Name = "lblImgExt";
-            this.lblImgExt.Size = new System.Drawing.Size(53, 13);
-            this.lblImgExt.TabIndex = 1;
-            this.lblImgExt.Text = "Extension";
             // 
             // chkImagefield
             // 
@@ -162,6 +153,7 @@
             this.chkImagefield.TabIndex = 0;
             this.chkImagefield.Text = "Image field";
             this.chkImagefield.UseVisualStyleBackColor = true;
+            this.chkImagefield.CheckedChanged += new System.EventHandler(this.chkImagefield_CheckedChanged);
             // 
             // pnlOptions
             // 
@@ -267,13 +259,17 @@
             this.panel3.Size = new System.Drawing.Size(430, 134);
             this.panel3.TabIndex = 5;
             // 
-            // cboRomExt
+            // chkImgUseSubfolder
             // 
-            this.cboRomExt.FormattingEnabled = true;
-            this.cboRomExt.Location = new System.Drawing.Point(95, 50);
-            this.cboRomExt.Name = "cboRomExt";
-            this.cboRomExt.Size = new System.Drawing.Size(98, 21);
-            this.cboRomExt.TabIndex = 4;
+            this.chkImgUseSubfolder.AutoSize = true;
+            this.chkImgUseSubfolder.Enabled = false;
+            this.chkImgUseSubfolder.Location = new System.Drawing.Point(114, 7);
+            this.chkImgUseSubfolder.Name = "chkImgUseSubfolder";
+            this.chkImgUseSubfolder.Size = new System.Drawing.Size(99, 17);
+            this.chkImgUseSubfolder.TabIndex = 5;
+            this.chkImgUseSubfolder.Text = "Use Subfolder?";
+            this.chkImgUseSubfolder.UseVisualStyleBackColor = true;
+            this.chkImgUseSubfolder.CheckedChanged += new System.EventHandler(this.chkImgUseSubfolder_CheckedChanged);
             // 
             // frmGameListGen
             // 
@@ -308,10 +304,8 @@
         private System.Windows.Forms.TextBox txtRomFolder;
         private System.Windows.Forms.Label lblRomFolder;
         private System.Windows.Forms.Panel pnlImageOptions;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtImgSubfolder;
         private System.Windows.Forms.Label lblImgSubfolder;
-        private System.Windows.Forms.TextBox txtImgExt;
-        private System.Windows.Forms.Label lblImgExt;
         private System.Windows.Forms.CheckBox chkImagefield;
         private System.Windows.Forms.Panel pnlOptions;
         private System.Windows.Forms.Label lblOptions;
@@ -327,6 +321,7 @@
         private System.Windows.Forms.Label lblRomExtension;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox cboRomExt;
+        private System.Windows.Forms.CheckBox chkImgUseSubfolder;
     }
 }
 

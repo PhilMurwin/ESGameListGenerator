@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
 
-namespace ESGameListGenerator2
+namespace ESGameListGenerator
 {
     public static class ProcessXML
     {
