@@ -14,7 +14,9 @@ namespace ESGameListGenerator.GameDBAPI
         {
             var getGameURL = baseURL + "/GetGame.php";
             var getGameAPI = new RestSharp.RestClient( getGameURL );
-            var apiRequest = new RestSharp.RestRequest( Method.POST );
+            var apiRequest = new RestSharp.RestRequest();
+            apiRequest.Method = Method.Post;
+
             apiRequest.AddQueryParameter( "name", name );
 
             if ( !string.IsNullOrEmpty( platform ) )
@@ -24,7 +26,11 @@ namespace ESGameListGenerator.GameDBAPI
 
             apiRequest.RequestFormat = DataFormat.Xml;
 
-            var response = getGameAPI.Execute( apiRequest );
+            // Create a Task<RestResponse> object
+            var apiTask =  getGameAPI.ExecuteAsync( apiRequest );
+            // Retrieve the response synchronously
+            var response = apiTask.Result;
+            // Parse the response
             var gameData =  ProcessXML.ParseXMLToModel<GameData>( response.Content );
 
             return gameData;
